@@ -1,0 +1,30 @@
+#' Validate that inputs are numeric
+#'
+#' Checks each named argument and stops with an informative error
+#' if any are not numeric.
+#'
+#' @param ... Named numeric inputs to validate.
+#'
+#' @return Invisible `NULL`. Called for its side effect of
+#'   stopping with an error if validation fails.
+#'
+#' @noRd # this tells roxygen2 not to generate .Rd file - internal helper dont need public doc
+validate_numeric_inputs <- function(...) {
+  args <- list(...)
+  arg_names <- names(args)
+
+  for (i in seq_along(args)) {
+    if (!is.numeric(args[[i]])) {
+      stop(
+        "'",
+        arg_names[i],
+        "' must be numeric, got ",
+        class(args[[i]])[1],
+        ".",
+        call. = FALSE
+      )
+    }
+  }
+
+  invisible(NULL)
+}

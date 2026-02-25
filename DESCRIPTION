@@ -12,3 +12,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 URL: https://github.com/lalsip/fishr
 BugReports: https://github.com/lalsip/fishr/issues
+Suggests: 
+    withr
