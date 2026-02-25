@@ -44,17 +44,25 @@ test_that("cpue matches reference data", {
 })
 
 # testing verbose
-test_that("cpue provides informative message when verbose", {
-  expect_snapshot(
-    cpue(c(100, 200), c(10, 20), verbose = TRUE)
-  )
-  expect_no_message(cpue(100, 10))
-  snapshot_accept()
+test_that("cpue uses verbosity when option set to TRUE", {
+  withr::local_options(fishr.verbose = TRUE) # will be reset when this test_that block finishes
+
+  expect_snapshot(cpue(100, 10))
 })
 
-test_that("cpue is silent by default", {
-  expect_no_message(cpue(100, 10))
+test_that("cpue is not verbose when option set to FALSE", {
+  withr::local_options(fishr.verbose = FALSE) # will be reset when this test_that block finishes
+
+  expect_silent(cpue(100, 10))
 })
+
+test_that("cpue verbosity falls back to FALSE when not set", {
+  withr::with_options(
+    list(fishr.verbose = NULL), # will be reset as soon as this code block executes
+    expect_no_message(cpue(100, 10))
+  )
+})
+# Options automatically restored after each test
 
 test_that("cpue error message is informative", {
   expect_snapshot(
@@ -62,6 +70,7 @@ test_that("cpue error message is informative", {
     error = TRUE
   )
 })
+
 test_that("cpue produces no warnings with valid input", {
   expect_snapshot(
     cpue(catch = c(100, 200, 300), effort = c(10, 20))
