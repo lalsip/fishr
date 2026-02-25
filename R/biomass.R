@@ -37,6 +37,8 @@ biomass_index <- function(
     effort = NULL,
     ...
 ) {
+  rlang::check_dots_used()
+
   if (is.null(cpue) && (!is.null(catch) && !is.null(effort))) {
     cpue <- cpue(catch, effort, ...)
   }
@@ -44,6 +46,8 @@ biomass_index <- function(
   if (is.null(cpue)) {
     stop("Must provide either 'cpue' or both 'catch' and 'effort'.")
   }
+
+  validate_numeric_inputs(cpue = cpue, area_swept = area_swept)
 
   cpue * area_swept
 }

@@ -23,13 +23,15 @@ cpue <- function(
     method = c("ratio", "log"),
     verbose = getOption("fishr.verbose", FALSE)
 ) {
-  method <- match.arg(method) #mmust be one of ratio or log or itll throw error
+  method <- match.arg(method)
+
+  validate_numeric_inputs(catch = catch, effort = effort)
 
   if (verbose) {
     message("Processing ", length(catch), " records using ", method, " method")
   }
 
-  raw_cpue <- switch( #depending on value of method, do different thing
+  raw_cpue <- switch(
     method,
     ratio = catch / effort,
     log = log(catch / effort)
@@ -37,6 +39,5 @@ cpue <- function(
 
   raw_cpue * gear_factor
 }
-
 
 
