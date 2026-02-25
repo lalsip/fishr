@@ -30,7 +30,7 @@ test_that("cpue works with generated data") {
 
   results<-cpue(data$catch, data$effort) #run data and results to get the numbers for expect_equal
 
-  expect_equal(results, c(34.05, 9.06, 19.24, 135.64, 6.37),
+  expect_equal(results, c(34.05, 9.06, 19.24, 135.64, 6.37), #could write dput(cpue(data$catch, data$effort))
                tolerance=1e-2)
 }
 
@@ -38,4 +38,36 @@ test_that("cpue matches reference data", {
   result <- cpue(reference_data$catch, reference_data$effort)
 
   expect_equal(result, reference_data$expected_cpue)
+})
+
+# testing verbose
+test_that("cpue provides informative message when verbose", {
+  expect_message(
+    cpue(c(100, 200), c(10, 20), verbose = TRUE),
+    "Processing 2 records"
+  )
+})
+
+test_that("cpue is silent by default", {
+  expect_no_message(cpue(100, 10))
+})
+
+test_that("cpue error message is informative", {
+  expect_snapshot(
+    cpue("not a number", 10),
+    error = TRUE
+  )
+})
+test_that("cpue produces no warnings with valid input", {
+  expect_snapshot(
+    cpue(catch = c(100, 200, 300), effort = c(10, 20))
+  )
+
+  expect_no_warning(cpue(100, 10))
+})
+test_that("cpue provides informative message when verbose", {
+  expect_snapshot(
+    cpue(c(100, 200), c(10, 20), verbose = TRUE)
+  )
+  expect_no_message(cpue(100, 10))
 })
