@@ -26,12 +26,15 @@ test_that("cpue handles missing data", {
 })
 
 test_that("cpue works with generated data", {
-  data <- generate_fishing_data(n=5)
+  data <- generate_fishing_data(n = 5)
 
-  results<-cpue(data$catch, data$effort) #run data and results to get the numbers for expect_equal
+  results <- cpue(data$catch, data$effort) #run data and results to get the numbers for expect_equal
 
-  expect_equal(results, c(34.05, 9.06, 19.24, 135.64, 6.37), #could write dput(cpue(data$catch, data$effort))
-               tolerance=1e-2)
+  expect_equal(
+    results,
+    c(34.05, 9.06, 19.24, 135.64, 6.37), #could write dput(cpue(data$catch, data$effort))
+    tolerance = 1e-2
+  )
 })
 
 test_that("cpue matches reference data", {
@@ -65,4 +68,3 @@ test_that("cpue produces no warnings with valid input", {
 
   expect_no_warning(cpue(100, 10))
 })
-

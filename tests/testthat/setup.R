@@ -1,6 +1,5 @@
 # tests/testthat/setup.R
 
-
 # Set up test fixtures that are expensive to create
 # (only created once, shared across all tests)
 
