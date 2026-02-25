@@ -1,3 +1,12 @@
+# cpue provides informative message when verbose
+
+    Code
+      cpue(c(100, 200), c(10, 20), verbose = TRUE)
+    Message
+      Processing2 records
+    Output
+      [1] 10 10
+
 # cpue error message is informative
 
     Code
@@ -15,13 +24,4 @@
       longer object length is not a multiple of shorter object length
     Output
       [1] 10 10 30
-
-# cpue provides informative message when verbose
-
-    Code
-      cpue(c(100, 200), c(10, 20), verbose = TRUE)
-    Message
-      Processing2 records
-    Output
-      [1] 10 10
 

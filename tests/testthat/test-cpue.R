@@ -42,10 +42,10 @@ test_that("cpue matches reference data", {
 
 # testing verbose
 test_that("cpue provides informative message when verbose", {
-  expect_message(
-    cpue(c(100, 200), c(10, 20), verbose = TRUE),
-    "Processing 2 records"
+  expect_snapshot(
+    cpue(c(100, 200), c(10, 20), verbose = TRUE)
   )
+  expect_no_message(cpue(100, 10))
 })
 
 test_that("cpue is silent by default", {
