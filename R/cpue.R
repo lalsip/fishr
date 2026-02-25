@@ -19,6 +19,10 @@ cpue <- function(catch, effort, gear_factor = 1, verbose=FALSE) {
 
   raw_cpue * gear_factor
 
+
+
+
+
 }
 
 
