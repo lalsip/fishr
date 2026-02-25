@@ -37,3 +37,6 @@ cpue <- function(
 
   raw_cpue * gear_factor
 }
+
+
+
