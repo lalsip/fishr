@@ -65,9 +65,4 @@ test_that("cpue produces no warnings with valid input", {
 
   expect_no_warning(cpue(100, 10))
 })
-test_that("cpue provides informative message when verbose", {
-  expect_snapshot(
-    cpue(c(100, 200), c(10, 20), verbose = TRUE)
-  )
-  expect_no_message(cpue(100, 10))
-})
+

@@ -15,13 +15,9 @@ cpue <- function(catch, effort, gear_factor = 1, verbose=FALSE) {
   if (verbose) {
     message("Processing", length(catch), " records")
   }
-  raw_cpue <- catch / effort
+  raw_cpue <- catch /      effort
 
-  raw_cpue * gear_factor
-
-
-
-
+        raw_cpue * gear_factor
 
 }
 
