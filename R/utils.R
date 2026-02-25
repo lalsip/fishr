@@ -8,7 +8,7 @@
 #' @return Invisible `NULL`. Called for its side effect of
 #'   stopping with an error if validation fails.
 #'
-#' @noRd # this tells roxygen2 not to generate .Rd file - internal helper dont need public doc
+#' @noRd
 validate_numeric_inputs <- function(...) {
   args <- list(...)
   arg_names <- names(args)
