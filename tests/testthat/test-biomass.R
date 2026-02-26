@@ -11,9 +11,10 @@ test_that("biomass_index handles vectors", {
   cpue_vals <- c(10, 20, 30)
   area_vals <- c(5, 5, 5)
 
-  expect_equal(biomass_index(cpue_vals, area_vals), c(50, 100, 150))
+  expect_equal_numbers(biomass_index(cpue_vals, area_vals), c(50, 100, 150))
 })
 
+## snapshot tests
 test_that("biomass_index throws error on invalid input", {
   expect_snapshot(biomass_index("ten", 5), error = TRUE)
   expect_snapshot(biomass_index(10, "five"), error = TRUE)
@@ -27,4 +28,15 @@ test_that("biomass_index verbosity falls back to FALSE when not set", {
   withr::local_options(fishr.verbose = NULL)
 
   expect_no_message(biomass_index(cpue = 5, area_swept = 100))
+})
+
+## testing s3 class
+test_that("cpue() returns a cpue_result object", {
+  result <- cpue(c(100,200), c(10, 20))
+  expect_s3_class(result, "cpue_result")
+})
+
+test_that("cpue print method works", {
+  result <- cpue(c(100,200),c(10, 20))
+  expect_snapshot(print(result))
 })

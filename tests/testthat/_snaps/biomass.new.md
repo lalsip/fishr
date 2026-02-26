@@ -3,16 +3,16 @@
     Code
       biomass_index("ten", 5)
     Condition
-      Error in `cpue * area_swept`:
-      ! non-numeric argument to binary operator
+      Error:
+      ! 'cpue' must be numeric, got character.
 
 ---
 
     Code
       biomass_index(10, "five")
     Condition
-      Error in `cpue * area_swept`:
-      ! non-numeric argument to binary operator
+      Error:
+      ! 'area_swept' must be numeric, got character.
 
 # biomass_index uses verbosity when set as an option
 
