@@ -47,3 +47,12 @@ fetch_kluane_data <- function(limit = 2000) {
   )
 }
 
+fish <- kluane[kluane$species != "no fish", ]
+
+survey_df <- data.frame(
+  catch = as.integer(table(fish$set_number)),
+  effort = 1L
+)
+
+lt_cpue <- cpue(survey_df)
+summary(lt_cpue)
