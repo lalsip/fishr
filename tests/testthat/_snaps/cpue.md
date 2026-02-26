@@ -7,7 +7,7 @@
     Output
       CPUE Results for 1 records
       Method: ratio 
-      Gear factpr: 1 
+      Gear factor: 1 
       Values: 10 
 
 # cpue error message is informative
@@ -15,8 +15,8 @@
     Code
       cpue("not a number", 10)
     Condition
-      Error in `catch / effort`:
-      ! non-numeric argument to binary operator
+      Error:
+      ! Unsupported input type for cpue(): character
 
 # cpue produces no warnings with valid input
 
@@ -26,5 +26,8 @@
       Warning in `catch / effort`:
       longer object length is not a multiple of shorter object length
     Output
-      [1] 10 10 30
+      CPUE Results for 3 records
+      Method: ratio 
+      Gear factor: 1 
+      Values: 10 10 30 
 

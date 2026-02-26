@@ -15,7 +15,8 @@ biomass_index(
 }
 \arguments{
 \item{cpue}{Numeric vector of CPUE values. If \code{catch} and \code{effort} are
-provided, this is computed automatically.}
+provided, this is computed automatically.
+@param catch Numeric vector of catch (e.g., kg)}
 
 \item{area_swept}{Numeric vector of area swept (e.g., km²)}
 
@@ -27,7 +28,7 @@ provided, this is computed automatically.}
 \code{getOption("fishr.verbose", FALSE)}.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=cpue]{cpue}}
+  Arguments passed on to \code{\link[=cpue.numeric]{cpue.numeric}}
   \describe{
     \item{\code{gear_factor}}{Numeric scalar for gear standardization (default 1)}
     \item{\code{method}}{Character; one of \code{"ratio"} (default) or \code{"log"}.}

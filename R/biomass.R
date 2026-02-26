@@ -5,10 +5,11 @@
 #'
 #' @param cpue Numeric vector of CPUE values. If `catch` and `effort` are
 #'   provided, this is computed automatically.
+#'  @param catch Numeric vector of catch (e.g., kg)
 #' @param area_swept Numeric vector of area swept (e.g., km²)
-#' @inheritParams cpue
-#' @inheritDotParams cpue -catch -effort
-#' @param ... Additional arguments passed to 'cpue()'.
+#' @inheritParams cpue.numeric
+#' @inheritDotParams cpue.numeric -effort -catch
+#' @param ... Additional arguments passed to 'cpue.numeric()'.
 #'
 #' @return A numeric vector of biomass index values
 #' @export
