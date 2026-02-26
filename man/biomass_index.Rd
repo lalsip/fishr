@@ -4,7 +4,14 @@
 \alias{biomass_index}
 \title{Calculate Biomass Index}
 \usage{
-biomass_index(cpue = NULL, area_swept, catch = NULL, effort = NULL, ...)
+biomass_index(
+  cpue = NULL,
+  area_swept,
+  catch = NULL,
+  effort = NULL,
+  verbose = getOption("fishr.versbose", default = FALSE),
+  ...
+)
 }
 \arguments{
 \item{cpue}{Numeric vector of CPUE values. If \code{catch} and \code{effort} are
